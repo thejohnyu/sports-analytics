@@ -1,1 +1,52 @@
-<p>calculator works!</p>
+<div class="calculator__container">
+  <h2 class="calculator__container__title">Calculator</h2>
+  <div class="calculator__container__menu">
+    <button
+      class="calculator__container__menu__item"
+      [class.calculator__container__menu__item--active]="
+        activeCalculator === 'moneyline'
+      "
+      (click)="setActive('moneyline')"
+    >
+      Money Line Odds
+    </button>
+    <button
+      class="calculator__container__menu__item"
+      [class.calculator__container__menu__item--active]="
+        activeCalculator === 'convert'
+      "
+      (click)="setActive('convert')"
+    >
+      Convert Odds to Percentages
+    </button>
+    <button
+      class="calculator__container__menu__item"
+      [class.calculator__container__menu__item--active]="
+        activeCalculator === 'parlay'
+      "
+      (click)="setActive('parlay')"
+    >
+      Parlay Calculator
+    </button>
+  </div>
+  <div class="calculator__container__content">
+    <div
+      *ngIf="activeCalculator === 'moneyline'"
+      class="calculator__container__content__section"
+    >
+      <p>Money Line Odds Calculator content goes here...</p>
+    </div>
+    <div
+      *ngIf="activeCalculator === 'convert'"
+      class="calculator__container__content__section"
+    >
+      <p>Convert Odds to Percentages Calculator content goes here...</p>
+    </div>
+    <div
+      *ngIf="activeCalculator === 'parlay'"
+      class="calculator__container__content__section"
+    >
+      <p>Parlay Calculator content goes here...</p>
+    </div>
+  </div>
+</div>

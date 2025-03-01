@@ -1,12 +1,18 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-calculator',
-  standalone: true,
-  imports: [],
   templateUrl: './calculator.component.html',
-  styleUrl: './calculator.component.scss'
+  styleUrls: ['./calculator.component.scss'],
+  imports: [CommonModule],
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CalculatorComponent {
+  activeCalculator: 'moneyline' | 'convert' | 'parlay' = 'moneyline';
 
+  setActive(calculator: 'moneyline' | 'convert' | 'parlay'): void {
+    this.activeCalculator = calculator;
+  }
 }

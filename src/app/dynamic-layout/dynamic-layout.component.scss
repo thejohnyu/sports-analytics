@@ -1,0 +1,21 @@
+.dynamic-layout__container {
+  position: relative;
+  background-color: var(--color-secondary);
+  border: 0.125rem solid var(--color-primary);
+  padding: 1rem;
+  min-height: 10rem;
+  transition: width 0.2s ease;
+  &__content {
+    font-size: 1rem;
+    color: var(--color-text);
+  }
+  &__resizer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1rem;
+    height: 100%;
+    cursor: ew-resize;
+    background: rgba(0, 0, 0, 0.1);
+  }
+}

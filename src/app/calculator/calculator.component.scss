@@ -1,0 +1,35 @@
+.calculator__container {
+    padding: 1.25rem;
+    &__title {
+      text-align: center;
+      margin-bottom: 1.25rem;
+      color: var(--color-primary);
+    }
+    &__menu {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      &__item {
+        background: #fff;
+        color: var(--color-primary);
+        border: 0.0625rem solid var(--color-primary);
+        padding: 0.5rem 1rem;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        &--active {
+          background: var(--color-primary);
+          color: var(--color-secondary);
+        }
+      }
+    }
+    &__content {
+      &__section {
+        border: 0.0625rem solid #ddd;
+        padding: 1rem;
+        border-radius: 0.25rem;
+        background: #f9f9f9;
+      }
+    }
+  }
+  
