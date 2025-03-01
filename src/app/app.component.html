@@ -1,1 +1,19 @@
-<app-todos></app-todos>
+<div class="app__container">
+  <header class="app__container__header">
+    <app-header></app-header>
+  </header>
+  <nav class="app__container__nav">
+    <p class="app__container__nav__text">Left Sidebar</p>
+  </nav>
+  <main class="app__container__main">
+    <router-outlet></router-outlet>
+  </main>
+  <aside class="app__container__aside">
+    <p class="app__container__aside__text">Right Sidebar</p>
+  </aside>
+  <footer class="app__container__footer">
+    <p class="app__container__footer__text">
+      &copy; 2025 Sports Analytics with AI
+    </p>
+  </footer>
+</div>
