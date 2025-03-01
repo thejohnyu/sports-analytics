@@ -1,0 +1,31 @@
+.teams__container {
+    padding: 1.25rem;
+    &__title {
+      text-align: center;
+      margin-bottom: 1.25rem;
+      color: var(--color-primary);
+    }
+    &__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+      gap: 1.25rem;
+    }
+    &__grid__card {
+      border: 0.125rem solid var(--color-primary);
+      padding: 1.25rem;
+      border-radius: 0.5rem;
+      background: var(--color-secondary);
+      text-align: center;
+      cursor: move;
+      &__title {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: bold;
+      }
+      &__record {
+        font-size: 0.875rem;
+        margin-top: 0.625rem;
+      }
+    }
+  }
+  

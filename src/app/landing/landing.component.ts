@@ -1,12 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'app-landing',
-  standalone: true,
-  imports: [],
   templateUrl: './landing.component.html',
-  styleUrl: './landing.component.scss'
+  styleUrls: ['./landing.component.scss'],
+  standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LandingComponent {
-
-}
+export class LandingComponent {}

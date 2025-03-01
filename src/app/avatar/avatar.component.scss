@@ -1,0 +1,58 @@
+.avatar__container {
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .avatar__container__img {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 0.125rem solid #fff;
+  }
+  
+  .avatar__container__menu {
+    position: absolute;
+    right: 0;
+    background: #fff;
+    color: #333;
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.25rem;
+    margin-top: 0.3125rem;
+    min-width: 11.25rem;
+    z-index: 1100;
+  }
+  
+  .avatar__container__menu__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .avatar__container__menu__list__item {
+    padding: 0.625rem;
+    cursor: pointer;
+    border-bottom: 0.0625rem solid #eee;
+  }
+  
+  .avatar__container__menu__list__item:hover {
+    background: #f5f5f5;
+  }
+  
+  .avatar__container__menu__list__item__switch {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3125rem;
+  }
+  
+  .avatar__container__menu__list__item__switch__label {
+    font-size: 0.75rem;
+    font-weight: bold;
+  }
+  
+  .avatar__container__menu__list__item__switch__select {
+    padding: 0.3125rem;
+    border: 0.0625rem solid #ccc;
+    border-radius: 0.25rem;
+  }
+  

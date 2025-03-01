@@ -1,12 +1,15 @@
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-avatar',
-  standalone: true,
-  imports: [],
   templateUrl: './avatar.component.html',
-  styleUrl: './avatar.component.scss'
+  styleUrls: ['./avatar.component.scss'],
+  standalone: true,
+  imports: [CommonModule],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AvatarComponent {
-
+  @Input() avatarMenuOpen = false;
+  @Output() avatarMenuToggle = new EventEmitter<void>();
 }
