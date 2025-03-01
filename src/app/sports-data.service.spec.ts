@@ -1,5 +1,4 @@
 import { TestBed } from '@angular/core/testing';
-
 import { SportsDataService } from './sports-data.service';
 
 describe('SportsDataService', () => {
@@ -10,7 +9,10 @@ describe('SportsDataService', () => {
     service = TestBed.inject(SportsDataService);
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  it('should return advanced stats for NBA', (done) => {
+    service.getAdvancedStats('NBA').subscribe(stats => {
+      expect(stats.length).toBeGreaterThan(0);
+      done();
+    });
   });
 });
