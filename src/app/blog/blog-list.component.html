@@ -1,0 +1,12 @@
+<div class="blog__container">
+    <h2 class="blog__container__title">Blog</h2>
+    <div class="blog__container__cards">
+      <div class="blog__container__cards__card" *ngFor="let blog of blogs">
+        <h3 class="blog__container__cards__card__title">{{ blog.title }}</h3>
+        <p class="blog__container__cards__card__meta">{{ blog.date }} | {{ blog.readTime }}</p>
+        <p class="blog__container__cards__card__summary">{{ blog.summary }}</p>
+        <a class="blog__container__cards__card__link" [routerLink]="['/blog', blog.id]">Read More</a>
+      </div>
+    </div>
+  </div>
+  

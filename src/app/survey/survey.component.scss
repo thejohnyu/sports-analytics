@@ -1,0 +1,43 @@
+.survey__container {
+  max-width: 31.25rem;
+  margin: 0 auto;
+  padding: 1.25rem;
+  border: 0.125rem solid var(--color-primary);
+  border-radius: 0.5rem;
+  background: var(--color-secondary);
+  &__title {
+    text-align: center;
+    margin-bottom: 1.25rem;
+    color: var(--color-primary);
+  }
+  &__form {
+    &__step {
+      margin-bottom: 1rem;
+      &__label {
+        font-size: 0.875rem;
+        font-weight: bold;
+      }
+      &__input {
+        width: 100%;
+        padding: 0.5rem;
+        margin-top: 0.3125rem;
+        border: 0.0625rem solid #ccc;
+        border-radius: 0.25rem;
+      }
+    }
+    &__buttons {
+      display: flex;
+      justify-content: space-between;
+      &__prev,
+      &__next,
+      &__submit {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 0.25rem;
+        cursor: pointer;
+        background: var(--color-primary);
+        color: var(--color-secondary);
+      }
+    }
+  }
+}

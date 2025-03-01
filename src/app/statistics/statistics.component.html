@@ -1,0 +1,50 @@
+<div class="statistics__container">
+  <h2 class="statistics__container__title">Advanced Statistics</h2>
+  <div *ngIf="loading" class="statistics__container__spinner">
+    <div class="statistics__container__spinner__lds-dual-ring"></div>
+  </div>
+  <table
+    *ngIf="advancedStats$ | async as stats"
+    class="statistics__container__table"
+  >
+    <thead class="statistics__container__table__head">
+      <tr class="statistics__container__table__head__row">
+        <th class="statistics__container__table__head__cell">Team</th>
+        <th class="statistics__container__table__head__cell">Wins</th>
+        <th class="statistics__container__table__head__cell">Losses</th>
+        <th class="statistics__container__table__head__cell">Win %</th>
+        <th class="statistics__container__table__head__cell">Moneyline ROI</th>
+        <th class="statistics__container__table__head__cell">Spread ROI</th>
+        <th class="statistics__container__table__head__cell">Total ROI</th>
+      </tr>
+    </thead>
+    <tbody class="statistics__container__table__body">
+      <tr
+        *ngFor="let stat of stats"
+        class="statistics__container__table__body__row"
+      >
+        <td class="statistics__container__table__body__cell">
+          {{ stat.team }}
+        </td>
+        <td class="statistics__container__table__body__cell">
+          {{ stat.wins }}
+        </td>
+        <td class="statistics__container__table__body__cell">
+          {{ stat.losses }}
+        </td>
+        <td class="statistics__container__table__body__cell">
+          {{ stat.winPercentage | number : "1.0-2" }}
+        </td>
+        <td class="statistics__container__table__body__cell">
+          {{ stat.moneylineROI | number : "1.1-1" }}%
+        </td>
+        <td class="statistics__container__table__body__cell">
+          {{ stat.spreadROI | number : "1.1-1" }}%
+        </td>
+        <td class="statistics__container__table__body__cell">
+          {{ stat.totalROI | number : "1.1-1" }}%
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

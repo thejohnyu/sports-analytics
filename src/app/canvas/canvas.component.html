@@ -1,0 +1,33 @@
+<div class="canvas__container">
+  <canvas class="canvas__container__canvas" #canvasElement></canvas>
+  <div class="canvas__container__toolbar">
+    <label class="canvas__container__toolbar__label">
+      Color:
+      <input
+        class="canvas__container__toolbar__input"
+        type="color"
+        [(ngModel)]="currentColor"
+      />
+    </label>
+    <label class="canvas__container__toolbar__label">
+      Stroke Width:
+      <input
+        class="canvas__container__toolbar__input"
+        type="range"
+        min="0.0625rem"
+        max="0.625rem"
+        step="0.0625rem"
+        [(ngModel)]="strokeWidth"
+      />
+    </label>
+    <button class="canvas__container__toolbar__button" (click)="clearCanvas()">
+      Clear
+    </button>
+    <button class="canvas__container__toolbar__button" (click)="zoomIn()">
+      Zoom In
+    </button>
+    <button class="canvas__container__toolbar__button" (click)="zoomOut()">
+      Zoom Out
+    </button>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="dashboard__container">
+  <h2 class="dashboard__container__title">Dashboard</h2>
+  <div class="dashboard__container__metrics">
+    <div class="dashboard__container__metrics__card">
+      <h3 class="dashboard__container__metrics__card__title">Wins</h3>
+      <p class="dashboard__container__metrics__card__value">120</p>
+    </div>
+    <div class="dashboard__container__metrics__card">
+      <h3 class="dashboard__container__metrics__card__title">Losses</h3>
+      <p class="dashboard__container__metrics__card__value">80</p>
+    </div>
+    <div class="dashboard__container__metrics__card">
+      <h3 class="dashboard__container__metrics__card__title">Win %</h3>
+      <p class="dashboard__container__metrics__card__value">60%</p>
+    </div>
+  </div>
+  <div class="dashboard__container__charts">
+    <div class="dashboard__container__charts__card">
+      <h3 class="dashboard__container__charts__card__title">
+        Wins & Losses Trend
+      </h3>
+      <canvas
+        class="dashboard__container__charts__card__canvas"
+        #lineChart
+      ></canvas>
+    </div>
+    <div class="dashboard__container__charts__card">
+      <h3 class="dashboard__container__charts__card__title">
+        Betting Odds Trend
+      </h3>
+      <canvas
+        class="dashboard__container__charts__card__canvas"
+        #barChart
+      ></canvas>
+    </div>
+  </div>
+</div>

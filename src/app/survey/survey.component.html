@@ -1,0 +1,74 @@
+<div class="survey__container">
+  <h2 class="survey__container__title">Survey</h2>
+  <form
+    class="survey__container__form"
+    [formGroup]="surveyForm"
+    (ngSubmit)="onSubmit()"
+  >
+    <div id="step0" class="survey__container__form__step">
+      <label class="survey__container__form__step__label" for="question1"
+        >Question 1: What is your favorite sport?</label
+      >
+      <input
+        class="survey__container__form__step__input"
+        id="question1"
+        formControlName="question1"
+        placeholder="Enter your answer"
+        required
+      />
+    </div>
+    <div id="step1" class="survey__container__form__step" style="display: none">
+      <label class="survey__container__form__step__label" for="question2"
+        >Question 2: How often do you watch games?</label
+      >
+      <input
+        class="survey__container__form__step__input"
+        id="question2"
+        formControlName="question2"
+        placeholder="Enter your answer"
+        required
+      />
+    </div>
+    <div id="step2" class="survey__container__form__step" style="display: none">
+      <label class="survey__container__form__step__label" for="question3"
+        >Question 3: Rate your overall satisfaction (1-10):</label
+      >
+      <input
+        class="survey__container__form__step__input"
+        id="question3"
+        formControlName="question3"
+        type="number"
+        placeholder="Enter a number"
+        min="1"
+        max="10"
+        required
+      />
+    </div>
+    <div class="survey__container__form__buttons">
+      <button
+        type="button"
+        class="survey__container__form__buttons__prev"
+        (click)="previous()"
+        [disabled]="currentStep === 0"
+      >
+        Previous
+      </button>
+      <button
+        type="button"
+        class="survey__container__form__buttons__next"
+        (click)="next()"
+        *ngIf="!isFinalStep()"
+      >
+        Next
+      </button>
+      <button
+        type="submit"
+        class="survey__container__form__buttons__submit"
+        *ngIf="isFinalStep()"
+        [disabled]="!surveyForm.valid"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>

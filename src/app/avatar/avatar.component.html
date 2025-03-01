@@ -1,0 +1,40 @@
+<div class="avatar__container" (click)="avatarMenuToggle.emit()">
+  <img
+    class="avatar__container__img"
+    src="assets/avatar.png"
+    alt="User Avatar"
+  />
+  <div class="avatar__container__menu" *ngIf="avatarMenuOpen">
+    <ul class="avatar__container__menu__list">
+      <li
+        class="avatar__container__menu__list__item"
+        (click)="avatarMenuToggle.emit()"
+      >
+        Account Info
+      </li>
+      <li
+        class="avatar__container__menu__list__item"
+        (click)="avatarMenuToggle.emit()"
+      >
+        Settings
+      </li>
+      <li class="avatar__container__menu__list__item">
+        <div class="avatar__container__menu__list__item__switch">
+          <label
+            class="avatar__container__menu__list__item__switch__label"
+            for="sportSelect"
+            >Switch Sport:</label
+          >
+          <select
+            class="avatar__container__menu__list__item__switch__select"
+            id="sportSelect"
+          >
+            <option value="NFL">NFL</option>
+            <option value="NBA">NBA</option>
+            <option value="MLB">MLB</option>
+          </select>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
