@@ -12,6 +12,4 @@ import { HeaderComponent } from './header/header.component';
   styleUrl: './app.component.scss',
   imports: [RouterOutlet, HeaderComponent],
 })
-export class AppComponent {
-  title = 'amplify-angular-template';
-}
+export class AppComponent {}
