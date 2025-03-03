@@ -11,7 +11,7 @@ export class DynamicLayoutComponent implements AfterViewInit, OnDestroy {
   @ViewChild('container', { static: true }) container!: ElementRef<HTMLDivElement>;
   @ViewChild('resizer', { static: true }) resizer!: ElementRef<HTMLDivElement>;
 
-  public containerWidth = 0;
+  public containerWidth = 200;
   private startX = 0;
   private startWidth = 0;
   private mouseMoveListener = (event: MouseEvent) => this.onMouseMove(event);
