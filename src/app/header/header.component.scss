@@ -50,8 +50,11 @@
 }
 
 .header__container__mobile-menu {
-  grid-column: 1 / -1;
-  background: #202123;
+  // grid-column: 1 / -1;
+  background: red;
+  border-bottom: 2px solid black;
+  max-width: 120px;
+  z-index: 200px;
 }
 
 .header__container__mobile-menu__list {
