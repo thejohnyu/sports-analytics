@@ -117,12 +117,12 @@
 
   &__pricing {
     padding: 2rem;
-    background: #f7f7f7;
+    background-color: #0d121c;
     text-align: center;
     &__title {
       font-size: 2rem;
       margin-bottom: 2rem;
-      color: #202123;
+      color: white;
     }
     &__grid {
       display: grid;
@@ -179,8 +179,8 @@
 
 /* Responsive: switch grid columns to single column on small screens */
 @media (max-width: 768px) {
-  .landing__deals__grid, 
-  .landing__pricing__grid, 
+  .landing__deals__grid,
+  .landing__pricing__grid,
   .about__content {
     grid-template-columns: 1fr;
   }
