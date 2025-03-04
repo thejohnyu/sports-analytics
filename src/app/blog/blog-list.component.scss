@@ -1,4 +1,6 @@
 .blog__container {
+  background-color: #0d121c;
+  border-radius: 12px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px, rgb(51, 51, 51) 0px 0px 0px 3px;
     padding: 1.25rem;
     &__title {
@@ -12,7 +14,8 @@
       gap: 1.25rem;
     }
     &__cards__card {
-      border: 0.125rem solid var(--color-primary);
+      border: 1px solid white;
+      // border: 0.125rem solid var(--color-primary);
       padding: 1.25rem;
       border-radius: 0.5rem;
       background: var(--color-secondary);
@@ -35,6 +38,7 @@
         margin-top: 0.625rem;
         padding: 0.5rem 1rem;
         background: var(--color-primary);
+        border: 1px solid white;
         color: var(--color-secondary);
         text-decoration: none;
         border-radius: 0.25rem;
