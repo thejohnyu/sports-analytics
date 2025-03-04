@@ -1,70 +1,36 @@
-import {
-  Component,
-  HostListener,
-  ChangeDetectionStrategy,
-} from '@angular/core';
+import { Component, HostListener, ChangeDetectionStrategy } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { Sport, SportService } from '../sport.service';
-import { AvatarComponent } from '../avatar/avatar.component';
 import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-header',
+  standalone: true,
+  imports: [RouterModule, CommonModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
-  imports: [AvatarComponent, CommonModule, RouterModule],
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
-  isVisible = true;
-  previousScroll: number = window.pageYOffset;
-  menuOpen = false;
-  avatarMenuOpen = false;
-  sports: Sport[] = ['NFL', 'NBA', 'MLB'];
-  selectedSport: Sport = 'NFL';
+  public navItems = [
+    { label: 'Home', path: '/' },
+    { label: 'About', path: '/about' },
+    { label: 'Downloads', path: '/downloads' },
+    { label: 'Docs', path: '/docs' },
+    { label: 'Community', path: '/community' }
+  ];
 
-  constructor(private router: Router, private sportService: SportService) {
-    this.selectedSport = this.sportService.currentSport;
+  // Mobile hamburger menu state
+  public mobileMenuOpen: boolean = false;
+
+  constructor(private router: Router, private sportService: SportService) {}
+
+  toggleMobileMenu(): void {
+    this.mobileMenuOpen = !this.mobileMenuOpen;
   }
 
-  @HostListener('window:scroll', [])
-  onWindowScroll(): void {
-    const currentScroll = window.pageYOffset;
-    this.isVisible = currentScroll === 0 || currentScroll < this.previousScroll;
-    this.previousScroll = currentScroll;
-  }
-
-  toggleMenu(): void {
-    this.menuOpen = !this.menuOpen;
-  }
-
-  closeMenu(): void {
-    this.menuOpen = false;
-  }
-
-  toggleTheme(): void {
-    document.body.classList.toggle('app--dark');
-  }
-
-  toggleAvatarMenu(): void {
-    this.avatarMenuOpen = !this.avatarMenuOpen;
-  }
-
-  goToAccount(): void {
-    this.router.navigate(['/settings']);
-    this.avatarMenuOpen = false;
-  }
-
-  goToSettings(): void {
-    this.router.navigate(['/settings']);
-    this.avatarMenuOpen = false;
-  }
-
-  onSportChange(newSport: Sport): void {
-    this.selectedSport = newSport;
-    this.sportService.setSport(newSport);
-    this.router.navigate(['/dashboard']);
-    this.avatarMenuOpen = false;
+  navigate(path: string): void {
+    this.router.navigate([path]);
+    this.mobileMenuOpen = false;
   }
 }
