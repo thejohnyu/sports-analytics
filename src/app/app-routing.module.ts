@@ -5,6 +5,7 @@ import { FallbackComponent } from './fallback/fallback.component';
 
 export const routes: Routes = [
   { path: '', component: LandingComponent },
+  { path: 'about', loadComponent: () => import('./about/about.component').then(m => m.AboutComponent) },
   {
     path: 'dashboard',
     loadComponent: () =>

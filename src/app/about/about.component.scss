@@ -1,0 +1,21 @@
+.about__container {
+    padding: 2rem;
+    max-width: 60rem;
+    margin: 0 auto;
+    background-color: #fff;
+    text-align: center;
+    color: #333;
+    
+    &__title {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #006400; /* Adjust to match Node.js branding if desired */
+    }
+    
+    &__description {
+      font-size: 1.125rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+  }
+  

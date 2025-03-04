@@ -15,9 +15,9 @@ export class HeaderComponent {
   public navItems = [
     { label: 'Home', path: '/' },
     { label: 'About', path: '/about' },
-    { label: 'Downloads', path: '/downloads' },
-    { label: 'Docs', path: '/docs' },
-    { label: 'Community', path: '/community' }
+    { label: 'Dashboard', path: '/dashboard' },
+    // { label: 'Docs', path: '/docs' },
+    // { label: 'Community', path: '/community' }
   ];
 
   // Mobile hamburger menu state
