@@ -21,7 +21,7 @@ export class HeaderComponent {
     { label: 'Survey', path: '/survey' },
     { label: 'Blog', path: '/blog' },
     { label: 'Calculator', path: '/calculator' },
-    { label: 'Canvas', path: '/canvas' },
+    // { label: 'Canvas', path: '/canvas' },
   ];
 
   // Mobile hamburger menu state

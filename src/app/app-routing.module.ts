@@ -38,12 +38,12 @@ export const routes: Routes = [
       import('./survey/survey.component').then((m) => m.SurveyComponent),
     // canActivate: [AuthGuard],
   },
-  {
-    path: 'canvas',
-    loadComponent: () =>
-      import('./canvas/canvas.component').then((m) => m.CanvasComponent),
-    // canActivate: [AuthGuard],
-  },
+  // {
+  //   path: 'canvas',
+  //   loadComponent: () =>
+  //     import('./canvas/canvas.component').then((m) => m.CanvasComponent),
+  //   // canActivate: [AuthGuard],
+  // },
   {
     path: 'blog',
     loadComponent: () =>
