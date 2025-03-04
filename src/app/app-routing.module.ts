@@ -6,6 +6,11 @@ import { FallbackComponent } from './fallback/fallback.component';
 export const routes: Routes = [
   { path: '', component: LandingComponent },
   {
+    path: 'about',
+    loadComponent: () =>
+      import('./about/about.component').then((m) => m.AboutComponent),
+  },
+  {
     path: 'dashboard',
     loadComponent: () =>
       import('./dashboard/dashboard.component').then(
@@ -33,12 +38,12 @@ export const routes: Routes = [
       import('./survey/survey.component').then((m) => m.SurveyComponent),
     // canActivate: [AuthGuard],
   },
-  {
-    path: 'canvas',
-    loadComponent: () =>
-      import('./canvas/canvas.component').then((m) => m.CanvasComponent),
-    // canActivate: [AuthGuard],
-  },
+  // {
+  //   path: 'canvas',
+  //   loadComponent: () =>
+  //     import('./canvas/canvas.component').then((m) => m.CanvasComponent),
+  //   // canActivate: [AuthGuard],
+  // },
   {
     path: 'blog',
     loadComponent: () =>
@@ -51,14 +56,6 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./calculator/calculator.component').then(
         (m) => m.CalculatorComponent
-      ),
-    // canActivate: [AuthGuard],
-  },
-  {
-    path: 'dynamic-layout',
-    loadComponent: () =>
-      import('./dynamic-layout/dynamic-layout.component').then(
-        (m) => m.DynamicLayoutComponent
       ),
     // canActivate: [AuthGuard],
   },

@@ -1,114 +1,33 @@
-<div class="header__container">
-  <div class="header__container__left">
-    <div class="header__container__left__hamburger" (click)="toggleMenu()">
-      <div class="header__container__left__hamburger__bar"></div>
-      <div class="header__container__left__hamburger__bar"></div>
-      <div class="header__container__left__hamburger__bar"></div>
+<header class="header">
+  <div class="header__content">
+    <div class="header__logo">
+      <a routerLink="/">
+        <!-- Replace with your logo image -->
+        <img src="assets/avatar-dark.png" alt="Sports Betting AI Logo" />
+      </a>
     </div>
-    <!-- <h1 class="header__container__left__logo">Sports Analytics with AI</h1> -->
+    <nav class="header__nav desktop-only">
+      <ul class="header__nav__list">
+        <li class="header__nav__item" *ngFor="let item of navItems">
+          <a routerLink="{{ item.path }}" routerLinkActive="active" class="header__nav__link">
+            {{ item.label }}
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="header__hamburger mobile-only" (click)="toggleMobileMenu()">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </div>
   </div>
-  <div class="header__container__right">
-    <!-- <button
-      class="header__container__right__theme-toggle"
-      (click)="toggleTheme()"
-    >
-      Dark Mode
-    </button> -->
-    <app-avatar (avatarMenuToggle)="toggleAvatarMenu()"></app-avatar>
-  </div>
-  <nav class="header__container__mobile-menu" *ngIf="menuOpen">
-    <ul class="header__container__mobile-menu__list">
-      <li class="header__container__mobile-menu__list__item">
-        <a
-          class="header__container__mobile-menu__list__item__link"
-          routerLink="/"
-          routerLinkActive="active"
-          (click)="closeMenu()"
-          >Home</a
-        >
-      </li>
-      <li class="header__container__mobile-menu__list__item">
-        <a
-          class="header__container__mobile-menu__list__item__link"
-          routerLink="/dashboard"
-          routerLinkActive="active"
-          (click)="closeMenu()"
-          >Dashboard</a
-        >
-      </li>
-      <li class="header__container__mobile-menu__list__item">
-        <a
-          class="header__container__mobile-menu__list__item__link"
-          routerLink="/teams"
-          routerLinkActive="active"
-          (click)="closeMenu()"
-          >Teams</a
-        >
-      </li>
-      <li class="header__container__mobile-menu__list__item">
-        <a
-          class="header__container__mobile-menu__list__item__link"
-          routerLink="/statistics"
-          routerLinkActive="active"
-          (click)="closeMenu()"
-          >Statistics</a
-        >
-      </li>
-      <li class="header__container__mobile-menu__list__item">
-        <a
-          class="header__container__mobile-menu__list__item__link"
-          routerLink="/settings"
-          routerLinkActive="active"
-          (click)="closeMenu()"
-          >Settings</a
-        >
-      </li>
-      <li class="header__container__mobile-menu__list__item">
-        <a
-          class="header__container__mobile-menu__list__item__link"
-          routerLink="/survey"
-          routerLinkActive="active"
-          (click)="closeMenu()"
-          >Survey</a
-        >
-      </li>
-      <li class="header__container__mobile-menu__list__item">
-        <a
-          class="header__container__mobile-menu__list__item__link"
-          routerLink="/canvas"
-          routerLinkActive="active"
-          (click)="closeMenu()"
-          >Canvas</a
-        >
-      </li>
-      <li class="header__container__mobile-menu__list__item">
-        <a
-          class="header__container__mobile-menu__list__item__link"
-          routerLink="/blog"
-          routerLinkActive="active"
-          (click)="closeMenu()"
-          >Blog</a
-        >
-      </li>
-      <li class="header__container__mobile-menu__list__item">
-        <a
-          class="header__container__mobile-menu__list__item__link"
-          routerLink="/calculator"
-          routerLinkActive="active"
-          (click)="closeMenu()"
-          >Calculator</a
-        >
-      </li>
-      <li class="header__container__mobile-menu__list__item">
-        <a
-          class="header__container__mobile-menu__list__item__link"
-          routerLink="/dynamic-layout"
-          routerLinkActive="active"
-          (click)="closeMenu()"
-          >Dynamic Layout</a
-        >
+  <nav class="header__mobile-menu mobile-only" *ngIf="mobileMenuOpen">
+    <ul class="header__mobile-menu__list">
+      <li class="header__mobile-menu__item" *ngFor="let item of navItems">
+        <a (click)="navigate(item.path)" class="header__mobile-menu__link">
+          {{ item.label }}
+        </a>
       </li>
     </ul>
-    
   </nav>
-</div>
+</header>

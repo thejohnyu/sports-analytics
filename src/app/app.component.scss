@@ -9,15 +9,17 @@
   min-height: 100vh;
   gap: 1rem;
   // padding: 1rem;
-  background-color: hsla(0,0%,10%,1);
+  // background-image: url(../assets/mid-section.png);
+  background-image: linear-gradient(to right, #0d121c, #737373);
+  background-color: #0d121c;
 }
 
 @media (max-width: 40rem) {
   .app__container {
     grid-template-areas:
-    "header header header"
-    "main    main   main"
-    "footer footer footer";
+      "header"
+      "main"
+      "footer";
     grid-template-columns: 1fr;
     gap: 0;
   }
@@ -26,9 +28,9 @@
 @media (min-width: 40rem) and (max-width: 64rem) {
   .app__container {
     grid-template-areas:
-    "header header header"
-    "main    main   main"
-    "footer footer footer";
+      "header"
+      "main"
+      "footer";
     grid-template-columns: 1fr;
     gap: 0;
   }
@@ -38,14 +40,16 @@
   grid-area: header;
 }
 .app__container__nav {
-  box-shadow: (0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px;
+  box-shadow: (0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px;
   grid-area: nav;
 }
 .app__container__main {
   grid-area: main;
 }
 .app__container__aside {
-  box-shadow: (0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px;
+  box-shadow: (0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
+    rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px;
   grid-area: aside;
 }
 .app__container__footer {

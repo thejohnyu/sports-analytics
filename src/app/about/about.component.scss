@@ -1,0 +1,56 @@
+.about {
+  &__hero {
+    border-radius: 12px;
+    background: #333 url('../../assets/avatar-dark.png') no-repeat center center;
+    background-size: cover;
+    padding: 4rem 2rem;
+    text-align: center;
+    color: #333;
+    h1 {
+      font-size: 3rem;
+      margin: 0;
+    }
+  }
+  &__content {
+    margin-top: 10px;
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+    gap: 2rem;
+    padding: 2rem;
+    align-items: center;
+    background-color: #0d121c;
+    &__text {
+      font-size: 1rem;
+      color: #fff;
+      line-height: 1.6;
+    }
+    
+    &__image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      border-radius: 12px;
+      img {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        border-radius: 12px;
+      }
+    }
+  }
+}
+
+/* Responsive adjustments for mobile and tablet: switch to a single column */
+@media (max-width: 768px) {
+  .about__content {
+    grid-template-columns: 1fr;
+    border-radius: 0px;
+    margin-top: 0px;
+    padding: 1rem;
+  }
+  .about__hero {
+    border-radius: 0px;
+  }
+}
