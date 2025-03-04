@@ -2,6 +2,7 @@
     <h2 class="teams__container__title">Team Gallery</h2>
     <div class="teams__container__grid" cdkDropList (cdkDropListDropped)="drop($event)">
       <div class="teams__container__grid__card" *ngFor="let team of teams" cdkDrag>
+        <img src="../../assets/ravens.png" width="100px" height="100px">
         <h3 class="teams__container__grid__card__title">{{ team.name }}</h3>
         <p class="teams__container__grid__card__record">{{ team.sport }} | Wins: {{ team.wins }} | Losses: {{ team.losses }}</p>
       </div>
