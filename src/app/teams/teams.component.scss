@@ -12,11 +12,14 @@
     gap: 1.25rem;
   }
   &__grid__card {
-    border: 0.125rem solid var(--color-primary);
+    border: 2px dotted gray;
+    // border: 0.125rem solid var(--color-primary);
+    // border: 0.125rem solid var(--color-primary);
     padding: 1.25rem;
     border-radius: 0.5rem;
     background: var(--color-secondary);
     text-align: center;
+    border-radius: 12px;
     cursor: move;
     &__title {
       margin: 0;
