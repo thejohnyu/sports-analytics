@@ -10,6 +10,7 @@ export class AuthService {
 
   // Simulated secure login; in production, use secure HTTP requests.
   login(): Observable<boolean> {
+    alert('arrive')
     this.isAuthenticatedSubject.next(true);
     return of(true);
   }

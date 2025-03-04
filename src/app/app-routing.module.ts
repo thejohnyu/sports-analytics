@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { LandingComponent } from './landing/landing.component';
 import { FallbackComponent } from './fallback/fallback.component';
-import { AuthGuard } from './auth/auth.guard';
+// import { AuthGuard } from './auth/auth.guard';
 
 export const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -11,13 +11,13 @@ export const routes: Routes = [
       import('./dashboard/dashboard.component').then(
         (m) => m.DashboardComponent
       ),
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: 'teams',
     loadComponent: () =>
       import('./teams/teams.component').then((m) => m.TeamsComponent),
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: 'statistics',
@@ -25,25 +25,25 @@ export const routes: Routes = [
       import('./statistics/statistics.component').then(
         (m) => m.StatisticsComponent
       ),
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: 'survey',
     loadComponent: () =>
       import('./survey/survey.component').then((m) => m.SurveyComponent),
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: 'canvas',
     loadComponent: () =>
       import('./canvas/canvas.component').then((m) => m.CanvasComponent),
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: 'blog',
     loadComponent: () =>
       import('./blog/blog-list.component').then((m) => m.BlogListComponent),
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   //   { path: 'blog/:blogId', loadComponent: () => import('./blog/blog-detail.component').then(m => m.BlogDetailComponent), canActivate: [AuthGuard] },
   {
@@ -52,7 +52,7 @@ export const routes: Routes = [
       import('./calculator/calculator.component').then(
         (m) => m.CalculatorComponent
       ),
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   {
     path: 'dynamic-layout',
@@ -60,7 +60,7 @@ export const routes: Routes = [
       import('./dynamic-layout/dynamic-layout.component').then(
         (m) => m.DynamicLayoutComponent
       ),
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
   },
   { path: '**', component: FallbackComponent },
 ];
