@@ -16,8 +16,9 @@ export class HeaderComponent {
     { label: 'Home', path: '/' },
     { label: 'About', path: '/about' },
     { label: 'Dashboard', path: '/dashboard' },
-    // { label: 'Docs', path: '/docs' },
-    // { label: 'Community', path: '/community' }
+    { label: 'Teams', path: '/teams' },
+    { label: 'Stats', path: '/statistics' },
+    { label: 'Survey', path: '/survey' },
   ];
 
   // Mobile hamburger menu state

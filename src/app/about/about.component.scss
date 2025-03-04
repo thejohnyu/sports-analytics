@@ -12,13 +12,14 @@
     }
   }
   &__content {
+    margin-top: 10px;
     border-radius: 12px;
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Two equal columns */
     gap: 2rem;
     padding: 2rem;
     align-items: center;
-
+    background-color: #0d121c;
     &__text {
       font-size: 1rem;
       color: #fff;
@@ -45,5 +46,11 @@
 @media (max-width: 768px) {
   .about__content {
     grid-template-columns: 1fr;
+    border-radius: 0px;
+    margin-top: 0px;
+    padding: 1rem;
+  }
+  .about__hero {
+    border-radius: 0px;
   }
 }
