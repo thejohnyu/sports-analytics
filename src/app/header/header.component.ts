@@ -19,10 +19,13 @@ export class HeaderComponent {
     { label: 'Teams', path: '/teams' },
     { label: 'Stats', path: '/statistics' },
     { label: 'Survey', path: '/survey' },
+    { label: 'Blog', path: '/blog' },
+    { label: 'Calculator', path: '/calculator' },
+    { label: 'Canvas', path: '/canvas' },
   ];
 
   // Mobile hamburger menu state
-  public mobileMenuOpen: boolean = false;
+  public mobileMenuOpen = false;
 
   constructor(private router: Router, private sportService: SportService) {}
 
