@@ -5,11 +5,18 @@
         <!-- Replace with your logo image -->
         <img src="assets/avatar-dark.png" alt="Sports Betting AI Logo" />
       </a>
+      <span class="header__title">
+        Sports AI
+      </span>
     </div>
     <nav class="header__nav desktop-only">
       <ul class="header__nav__list">
         <li class="header__nav__item" *ngFor="let item of navItems">
-          <a routerLink="{{ item.path }}" routerLinkActive="active" class="header__nav__link">
+          <a
+            routerLink="{{ item.path }}"
+            routerLinkActive="active"
+            class="header__nav__link"
+          >
             {{ item.label }}
           </a>
         </li>

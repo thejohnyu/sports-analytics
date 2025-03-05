@@ -13,14 +13,15 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent {
   public navItems = [
+    { label: 'Dashboard', path: '/dashboard' },
     { label: 'Home', path: '/' },
     { label: 'About', path: '/about' },
-    { label: 'Dashboard', path: '/dashboard' },
+    { label: 'Blog', path: '/blog' },
     { label: 'Teams', path: '/teams' },
     { label: 'Stats', path: '/statistics' },
-    { label: 'Survey', path: '/survey' },
-    { label: 'Blog', path: '/blog' },
-    { label: 'Calculator', path: '/calculator' },
+    { label: 'Pricing', path: '/pricing' },
+    // { label: 'Survey', path: '/survey' },
+    // { label: 'Calculator', path: '/calculator' },
     // { label: 'Canvas', path: '/canvas' },
   ];
 
