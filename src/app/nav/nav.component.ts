@@ -1,11 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 
 interface NavSubItem {
   label: string;
   route: string;
-  active?: boolean;
   external?: boolean; // Optional property for sub-items
 }
 
@@ -15,8 +14,10 @@ interface NavItem {
   route: string;           // e.g., "/start"
   status?: string;         // e.g., "beta"
   active?: boolean;        // true if active
-  external?: boolean;      // Optional property for main nav item (if needed)
+  external?: boolean;      // Optional for main nav item if needed
   subItems?: NavSubItem[]; // Optional sub-menu items
+  expanded?: boolean;      // For accordion toggle
+  subColor?: string;       // Unique color for the sub label
 }
 
 @Component({
@@ -30,70 +31,55 @@ interface NavItem {
 export class NavComponent {
   navItems: NavItem[] = [
     {
-      labelMain: 'NBA',
+      labelMain: 'Home',
       labelSub: 'Start',
+      route: '/',
+      active: true,
+      expanded: false,
+      subColor: '#cb1010', // Gold/Brown
+      subItems: [
+        { label: 'Teams', route: '/start/latest/docs/framework/react/examples/start-basic' },
+        { label: 'Stats', route: '/start/latest/docs/framework/react/overview' },
+        { label: 'Odds', route: 'https://github.com/tanstack/router', external: true }
+      ]
+    },
+    {
+      labelMain: 'NBA',
+      labelSub: 'View',
       route: '/dashboard',
       status: 'beta',
       active: true,
-      // external not used on main nav items if not needed; set if required
+      expanded: false,
+      subColor: '#00ffff', // Cyan
       subItems: [
-        { label: 'Home', route: '/start/latest/docs/framework/react/examples/start-basic' },
-        { label: 'Dashboard', route: '/start/latest/docs/framework/react/overview' },
-        { label: 'Stats', route: 'https://github.com/tanstack/router', external: true }
+        { label: 'Teams', route: '/start/latest/docs/framework/react/examples/start-basic' },
+        { label: 'Stats', route: '/start/latest/docs/framework/react/overview' },
+        { label: 'Odds', route: 'https://github.com/tanstack/router', external: true }
       ]
     },
     {
       labelMain: 'NFL',
-      labelSub: 'Start',
+      labelSub: 'View',
       route: '/dashboard',
       status: 'beta',
-      active: true,
-      // external not used on main nav items if not needed; set if required
+      active: false,
+      expanded: false,
+      subColor: '#ff9800', // Orange
       subItems: [
-        { label: 'Home', route: '/start/latest/docs/framework/react/examples/start-basic' },
-        { label: 'Dashboard', route: '/start/latest/docs/framework/react/overview' },
-        { label: 'Stats', route: 'https://github.com/tanstack/router', external: true }
+        { label: 'Metrics', route: '/dashboard/metrics' },
+        { label: 'Charts', route: '/dashboard/charts' }
       ]
     },
-    {
-      labelMain: 'MLB',
-      labelSub: 'Start',
-      route: '/dashboard',
-      status: 'beta',
-      active: true,
-      // external not used on main nav items if not needed; set if required
-      subItems: [
-        { label: 'Home', route: '/start/latest/docs/framework/react/examples/start-basic' },
-        { label: 'Dashboard', route: '/start/latest/docs/framework/react/overview' },
-        { label: 'Stats', route: 'https://github.com/tanstack/router', external: true }
-      ]
-    },
-    {
-      labelMain: 'NHL',
-      labelSub: 'Start',
-      route: '/dashboard',
-      status: 'beta',
-      active: true,
-      // external not used on main nav items if not needed; set if required
-      subItems: [
-        { label: 'Home', route: '/start/latest/docs/framework/react/examples/start-basic' },
-        { label: 'Dashboard', route: '/start/latest/docs/framework/react/overview' },
-        { label: 'Stats', route: 'https://github.com/tanstack/router', external: true }
-      ]
-    },
-    {
-      labelMain: 'UFC',
-      labelSub: 'Start',
-      route: '/dashboard',
-      status: 'beta',
-      active: true,
-      // external not used on main nav items if not needed; set if required
-      subItems: [
-        { label: 'Home', route: '/start/latest/docs/framework/react/examples/start-basic' },
-        { label: 'Dashboard', route: '/start/latest/docs/framework/react/overview' },
-        { label: 'Stats', route: 'https://github.com/tanstack/router', external: true }
-      ]
-    },
-    // Additional nav items can be added here...
+    // Add additional nav items as needed...
   ];
+
+  constructor(private router: Router) {}
+
+  // Toggle the expanded state for nav items that have subItems
+  toggleExpanded(item: NavItem, event: Event): void {
+    if (item.subItems && item.subItems.length) {
+      event.preventDefault(); // Prevent navigation if sub-items exist
+      item.expanded = !item.expanded;
+    }
+  }
 }
