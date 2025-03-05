@@ -4,21 +4,33 @@ import Chart from 'chart.js/auto';
 
 interface ChartConfig {
   type: string;
+  title: string;
   data: any;
   options: any;
-  title: string;
+  meta: string[];  // meta tags for filtering
+}
+
+interface Metric {
+  label: string;
+  value: number | string;
+  data: number[];  // data for mini chart
+  type: string;    // 'line' or 'doughnut'
 }
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
-  imports: [CommonModule],
   standalone: true,
+  imports: [CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent implements AfterViewInit {
-  // Array of 12 chart configurations with mock data
+  // Filter toolbar options
+  filterOptions: string[] = ['Select All', 'High ROI', 'Trending', 'Recent', 'Popular', 'Upset Alert', 'Fade The Public', 'Double Digit Dogs', 'Bye Week'];
+  selectedFilters: string[] = ['Select All'];
+
+  // Array of 12 chart configurations with mock meta data
   chartConfigs: ChartConfig[] = [
     {
       type: 'line',
@@ -31,10 +43,11 @@ export class DashboardComponent implements AfterViewInit {
           borderColor: '#4caf50',
           backgroundColor: 'rgba(76, 175, 80, 0.2)',
           tension: 0.3,
-          fill: true,
+          fill: true
         }]
       },
-      options: { responsive: true, maintainAspectRatio: false }
+      options: { responsive: true, maintainAspectRatio: false },
+      meta: ['High ROI', 'Trending']
     },
     {
       type: 'bar',
@@ -47,7 +60,8 @@ export class DashboardComponent implements AfterViewInit {
           backgroundColor: '#ff9800'
         }]
       },
-      options: { responsive: true, maintainAspectRatio: false }
+      options: { responsive: true, maintainAspectRatio: false },
+      meta: ['Recent', 'Popular']
     },
     {
       type: 'pie',
@@ -60,7 +74,8 @@ export class DashboardComponent implements AfterViewInit {
           backgroundColor: ['#f44336', '#2196f3', '#4caf50']
         }]
       },
-      options: { responsive: true, maintainAspectRatio: false }
+      options: { responsive: true, maintainAspectRatio: false },
+      meta: ['High ROI', 'Popular']
     },
     {
       type: 'doughnut',
@@ -73,7 +88,8 @@ export class DashboardComponent implements AfterViewInit {
           backgroundColor: ['#ff9800', '#4caf50', '#2196f3']
         }]
       },
-      options: { responsive: true, maintainAspectRatio: false }
+      options: { responsive: true, maintainAspectRatio: false },
+      meta: ['Trending', 'Recent']
     },
     {
       type: 'radar',
@@ -88,7 +104,8 @@ export class DashboardComponent implements AfterViewInit {
           pointBackgroundColor: '#2196f3'
         }]
       },
-      options: { responsive: true, maintainAspectRatio: false }
+      options: { responsive: true, maintainAspectRatio: false },
+      meta: ['High ROI', 'Recent']
     },
     {
       type: 'polarArea',
@@ -101,7 +118,8 @@ export class DashboardComponent implements AfterViewInit {
           backgroundColor: ['#4caf50', '#ffeb3b', '#ff9800', '#f44336']
         }]
       },
-      options: { responsive: true, maintainAspectRatio: false }
+      options: { responsive: true, maintainAspectRatio: false },
+      meta: ['Trending']
     },
     {
       type: 'line',
@@ -117,7 +135,8 @@ export class DashboardComponent implements AfterViewInit {
           fill: true
         }]
       },
-      options: { responsive: true, maintainAspectRatio: false }
+      options: { responsive: true, maintainAspectRatio: false },
+      meta: ['Popular', 'High ROI']
     },
     {
       type: 'bar',
@@ -130,7 +149,8 @@ export class DashboardComponent implements AfterViewInit {
           backgroundColor: '#009688'
         }]
       },
-      options: { responsive: true, maintainAspectRatio: false }
+      options: { responsive: true, maintainAspectRatio: false },
+      meta: ['Recent']
     },
     {
       type: 'line',
@@ -146,7 +166,8 @@ export class DashboardComponent implements AfterViewInit {
           fill: true
         }]
       },
-      options: { responsive: true, maintainAspectRatio: false }
+      options: { responsive: true, maintainAspectRatio: false },
+      meta: ['Trending', 'Popular']
     },
     {
       type: 'bar',
@@ -159,7 +180,8 @@ export class DashboardComponent implements AfterViewInit {
           backgroundColor: '#ff5722'
         }]
       },
-      options: { responsive: true, maintainAspectRatio: false }
+      options: { responsive: true, maintainAspectRatio: false },
+      meta: ['Recent', 'High ROI']
     },
     {
       type: 'pie',
@@ -172,7 +194,8 @@ export class DashboardComponent implements AfterViewInit {
           backgroundColor: ['#4caf50', '#2196f3', '#ff9800', '#9c27b0']
         }]
       },
-      options: { responsive: true, maintainAspectRatio: false }
+      options: { responsive: true, maintainAspectRatio: false },
+      meta: ['Popular']
     },
     {
       type: 'doughnut',
@@ -185,24 +208,113 @@ export class DashboardComponent implements AfterViewInit {
           backgroundColor: ['#3f51b5', '#03a9f4', '#8bc34a', '#ffc107']
         }]
       },
-      options: { responsive: true, maintainAspectRatio: false }
+      options: { responsive: true, maintainAspectRatio: false },
+      meta: ['Trending', 'High ROI']
     }
   ];
 
+  // Metrics array with mini chart data
+  metrics = [
+    { label: 'Wins', value: 120, data: [10, 15, 12, 18, 20, 25], type: 'line' },
+    { label: 'Losses', value: 80, data: [5, 8, 7, 9, 8, 10], type: 'line' },
+    { label: 'Win %', value: '60%', data: [60, 40], type: 'doughnut' }
+  ];
+
+  // Query all main chart canvases
   @ViewChildren('chartCanvas') chartCanvases!: QueryList<ElementRef<HTMLCanvasElement>>;
+  // Query all mini chart canvases for metrics
+  @ViewChildren('miniChart') miniCharts!: QueryList<ElementRef<HTMLCanvasElement>>;
 
   ngAfterViewInit(): void {
-    // Iterate over each canvas element and its corresponding chart configuration
+    // Render main charts based on filtered chart configurations
     this.chartCanvases.forEach((canvasRef, index) => {
-      const config = this.chartConfigs[index];
-      const ctx = canvasRef.nativeElement.getContext('2d');
-      if (ctx && config) {
-        new Chart(ctx, {
-          type: config.type as any,
-          data: config.data,
-          options: config.options
-        });
+      const config = this.filteredChartConfigs[index];
+      if (config) {
+        const ctx = canvasRef.nativeElement.getContext('2d');
+        if (ctx) {
+          new Chart(ctx, {
+            type: config.type as any,
+            data: config.data,
+            options: config.options
+          });
+        }
       }
     });
+
+    // Render mini charts for metrics
+    this.miniCharts.forEach((canvasRef, index) => {
+      const metric = this.metrics[index];
+      const ctx = canvasRef.nativeElement.getContext('2d');
+      if (ctx && metric) {
+        let miniConfig: any;
+        if (metric.type === 'line') {
+          miniConfig = {
+            type: 'line',
+            data: {
+              labels: metric.data.map((_, i) => `T${i + 1}`),
+              datasets: [{
+                label: metric.label,
+                data: metric.data,
+                borderColor: metric.label === 'Wins' ? '#4caf50' : '#f44336',
+                backgroundColor: 'rgba(0,0,0,0)',
+                tension: 0.3,
+                fill: false
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: { legend: { display: false } },
+              scales: { x: { display: false }, y: { display: false } }
+            }
+          };
+        } else if (metric.type === 'doughnut') {
+          miniConfig = {
+            type: 'doughnut',
+            data: {
+              labels: ['Win', 'Loss'],
+              datasets: [{
+                label: metric.label,
+                data: metric.data,
+                backgroundColor: ['#4caf50', '#f44336']
+              }]
+            },
+            options: {
+              responsive: true,
+              maintainAspectRatio: false,
+              plugins: { legend: { display: false } }
+            }
+          };
+        }
+        new Chart(ctx, miniConfig);
+      }
+    });
+  }
+
+  // Filter: if "Select All" is checked, return all chart configurations
+  get filteredChartConfigs(): ChartConfig[] {
+    if (this.selectedFilters.includes('Select All')) {
+      return this.chartConfigs;
+    }
+    return this.chartConfigs.filter(config =>
+      config.meta.some(tag => this.selectedFilters.includes(tag))
+    );
+  }
+
+  toggleFilter(option: string): void {
+    if (option === 'Select All') {
+      if (!this.selectedFilters.includes('Select All')) {
+        this.selectedFilters = ['Select All'];
+      } else {
+        this.selectedFilters = [];
+      }
+    } else {
+      this.selectedFilters = this.selectedFilters.filter(f => f !== 'Select All');
+      if (this.selectedFilters.includes(option)) {
+        this.selectedFilters = this.selectedFilters.filter(f => f !== option);
+      } else {
+        this.selectedFilters.push(option);
+      }
+    }
   }
 }

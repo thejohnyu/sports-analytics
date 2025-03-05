@@ -3,53 +3,52 @@
     <h1>Dashboard</h1>
   </header>
 
-  <!-- Metrics Section -->
+  <!-- Metrics Section with Mini Charts -->
   <section class="dashboard__metrics">
-    <div class="metric-card">
-      <div>
-        <p class="metric-card__label">Wins</p>
-        <p class="metric-card__value">120</p>
-      </div>
-      <div>
-        <p class="metric-card__label">Wins</p>
-        <p class="metric-card__value">120</p>
+    <div class="metric-card" *ngFor="let metric of metrics">
+      <p class="metric-card__label">{{ metric.label }}</p>
+      <p class="metric-card__value">{{ metric.value }}</p>
+      <div class="metric-card__mini-chart-container">
+        <canvas #miniChart class="metric-card__mini-chart"></canvas>
       </div>
     </div>
-    <div class="metric-card">
-      <div>
-        <p class="metric-card__label">Wins</p>
-        <p class="metric-card__value">120</p>
-      </div>
-      <div>
-        <p class="metric-card__label">Wins</p>
-        <p class="metric-card__value">120</p>
-      </div>
-    </div>
-    <div class="metric-card">
-      <div>
-        <p class="metric-card__label">Wins</p>
-        <p class="metric-card__value">120</p>
-      </div>
-      <div>
-        <p class="metric-card__label">Wins</p>
-        <p class="metric-card__value">120</p>
-      </div>
-      <div>
-        <p class="metric-card__label">Wins</p>
-        <p class="metric-card__value">120</p>
-      </div>
-      <div>
-        <p class="metric-card__label">Wins</p>
-        <p class="metric-card__value">120</p>
-      </div>
+  </section>
+
+  <!-- Filter Toolbar -->
+  <section class="dashboard__filter-toolbar">
+    <div class="filter-toolbar__container">
+      <label *ngFor="let option of filterOptions" class="filter-option">
+        <input
+          type="checkbox"
+          [checked]="selectedFilters.includes(option)"
+          (change)="toggleFilter(option)"
+        />
+        <span>{{ option }}</span>
+      </label>
     </div>
   </section>
 
   <!-- Charts Section -->
   <section class="dashboard__charts">
-    <div class="chart-card" *ngFor="let config of chartConfigs; let i = index">
-      <p class="chart-card__title">{{ config.title }}</p>
-      <canvas #chartCanvas class="chart-card__canvas"></canvas>
+    <div
+      class="chart-card"
+      *ngFor="let config of filteredChartConfigs; let i = index"
+    >
+      <!-- Card Toolbar/Header -->
+      <div class="chart-card__toolbar">
+        <p class="chart-card__toolbar__title">{{ config.title }}</p>
+      </div>
+      <!-- Chart Body -->
+      <div class="chart-card__body">
+        <canvas #chartCanvas class="chart-card__canvas"></canvas>
+      </div>
+      <!-- Card Description -->
+      <div class="chart-card__description">
+        <p>
+          <strong>{{ config.title }}</strong> displays mock data for
+          demonstration.
+        </p>
+      </div>
     </div>
   </section>
 </div>
