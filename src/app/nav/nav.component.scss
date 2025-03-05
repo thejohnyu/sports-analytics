@@ -5,14 +5,14 @@
   display: flex;
   flex-direction: column;
   padding: 1rem;
-  
+
   .nav-item {
     margin-bottom: 1rem;
-    
+
     &__link {
       text-decoration: none;
       display: block;
-      
+
       .nav-item__link__container {
         display: flex;
         align-items: center;
@@ -23,21 +23,21 @@
         border: 1px solid rgb(44, 52, 55);
         transition: background-color 0.3s;
       }
-      
+
       .nav-item__link__container:hover {
         background-color: rgb(44, 52, 55);
       }
-      
+
       .nav-item__link__library {
         font-weight: bold;
         color: #fff;
       }
-      
+
       .nav-item__link__sub {
         font-weight: bold;
-        /* Color is set dynamically using [style.color] binding */
+        /* Color set dynamically via [style.color] */
       }
-      
+
       .nav-item__link__status {
         padding: 0.25rem 0.5rem;
         text-transform: uppercase;
@@ -68,6 +68,12 @@
         &:hover {
           background-color: rgb(44, 52, 55);
         }
+        .nav-item__subitem__icon {
+          width: 1em;
+          height: 1em;
+          margin-right: 0.5rem;
+          /* Additional styling if needed */
+        }
       }
     }
   }
@@ -75,9 +81,15 @@
 
 /* Pulse animation for status badge */
 @keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.6; }
-  100% { opacity: 1; }
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 /* Responsive: collapse sidebar for smaller screens */
@@ -93,3 +105,4 @@
     border-bottom: 1px solid rgb(44, 52, 55);
   }
 }
+

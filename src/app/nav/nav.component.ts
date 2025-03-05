@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { RouterModule, Router } from '@angular/router';
+import { RouterModule } from '@angular/router';
 
 interface NavSubItem {
   label: string;
   route: string;
-  external?: boolean; // Optional property for sub-items
+  external?: boolean; // Optional property for external links
+  iconUrl?: string;   // Optional dynamic icon: URL or inline SVG markup (if using [innerHTML])
 }
 
 interface NavItem {
@@ -16,7 +17,7 @@ interface NavItem {
   active?: boolean;        // true if active
   external?: boolean;      // Optional for main nav item if needed
   subItems?: NavSubItem[]; // Optional sub-menu items
-  expanded?: boolean;      // For accordion toggle
+  expanded?: boolean;      // For accordion toggle effect
   subColor?: string;       // Unique color for the sub label
 }
 
@@ -31,54 +32,108 @@ interface NavItem {
 export class NavComponent {
   navItems: NavItem[] = [
     {
-      labelMain: 'Home',
-      labelSub: 'Start',
-      route: '/',
-      active: true,
+      labelMain: 'Dashboard',
+      labelSub: 'View',
+      route: '/dashboard',
+      active: false,
       expanded: false,
-      subColor: '#cb1010', // Gold/Brown
+      subColor: '#ff9800', // Orange
       subItems: [
-        { label: 'Teams', route: '/start/latest/docs/framework/react/examples/start-basic' },
-        { label: 'Stats', route: '/start/latest/docs/framework/react/overview' },
-        { label: 'Odds', route: 'https://github.com/tanstack/router', external: true }
+        { label: 'Metrics', route: '/dashboard/metrics', iconUrl: '../../assets/about-me.png' },
+        { label: 'Charts', route: '/dashboard/charts', iconUrl: '../../assets/8.png' }
       ]
     },
     {
       labelMain: 'NBA',
       labelSub: 'View',
-      route: '/dashboard',
+      route: '/',
       status: 'beta',
       active: true,
       expanded: false,
       subColor: '#00ffff', // Cyan
       subItems: [
-        { label: 'Teams', route: '/start/latest/docs/framework/react/examples/start-basic' },
-        { label: 'Stats', route: '/start/latest/docs/framework/react/overview' },
-        { label: 'Odds', route: 'https://github.com/tanstack/router', external: true }
+        { label: 'Odds', route: '/start/latest/docs/framework/react/examples/start-basic', iconUrl: '../../assets/4.png' },
+        { label: 'Futures', route: '/start/latest/docs/framework/react/overview', iconUrl: '../../assets/5.png' },
+        { label: 'Ranking', route: 'https://github.com/tanstack/router', external: true, iconUrl: '../../assets/6.png' }
       ]
     },
     {
       labelMain: 'NFL',
       labelSub: 'View',
-      route: '/dashboard',
+      route: '/',
       status: 'beta',
-      active: false,
+      active: true,
       expanded: false,
-      subColor: '#ff9800', // Orange
+      subColor: '#7ed957', // Red
       subItems: [
-        { label: 'Metrics', route: '/dashboard/metrics' },
-        { label: 'Charts', route: '/dashboard/charts' }
+        { label: 'Odds', route: '/start/latest/docs/framework/react/examples/start-basic', iconUrl: '../../assets/4.png' },
+        { label: 'Futures', route: '/start/latest/docs/framework/react/overview', iconUrl: '../../assets/5.png' },
+        { label: 'Ranking', route: 'https://github.com/tanstack/router', external: true, iconUrl: '../../assets/6.png' }
       ]
     },
-    // Add additional nav items as needed...
+    {
+      labelMain: 'MLB',
+      labelSub: 'View',
+      route: '/',
+      status: 'beta',
+      active: true,
+      expanded: false,
+      subColor: '	#FF00FF',
+      subItems: [
+        { label: 'Odds', route: '/start/latest/docs/framework/react/examples/start-basic', iconUrl: '../../assets/4.png' },
+        { label: 'Futures', route: '/start/latest/docs/framework/react/overview', iconUrl: '../../assets/5.png' },
+        { label: 'Ranking', route: 'https://github.com/tanstack/router', external: true, iconUrl: '../../assets/6.png' }
+      ]
+    },
+    {
+      labelMain: 'NHL',
+      labelSub: 'View',
+      route: '/',
+      status: 'beta',
+      active: true,
+      expanded: false,
+      subColor: '#9FE2BF',
+      subItems: [
+        { label: 'Odds', route: '/start/latest/docs/framework/react/examples/start-basic', iconUrl: '../../assets/4.png' },
+        { label: 'Futures', route: '/start/latest/docs/framework/react/overview', iconUrl: '../../assets/5.png' },
+        { label: 'Ranking', route: 'https://github.com/tanstack/router', external: true, iconUrl: '../../assets/6.png' }
+      ]
+    },
+    {
+      labelMain: 'UFC',
+      labelSub: 'View',
+      route: '/',
+      status: 'beta',
+      active: true,
+      expanded: false,
+      subColor: '#8e44ad',
+      subItems: [
+        { label: 'Odds', route: '/start/latest/docs/framework/react/examples/start-basic', iconUrl: '../../assets/4.png' },
+        { label: 'Futures', route: '/start/latest/docs/framework/react/overview', iconUrl: '../../assets/5.png' },
+        { label: 'Ranking', route: 'https://github.com/tanstack/router', external: true, iconUrl: '../../assets/6.png' }
+      ]
+    },
+    {
+      labelMain: 'ESPORTS',
+      labelSub: 'View',
+      route: '/',
+      status: 'PRO',
+      active: true,
+      expanded: false,
+      subColor: 'red',
+      subItems: [
+        { label: 'Odds', route: '/start/latest/docs/framework/react/examples/start-basic', iconUrl: '../../assets/4.png' },
+        { label: 'Futures', route: '/start/latest/docs/framework/react/overview', iconUrl: '../../assets/5.png' },
+        { label: 'Ranking', route: 'https://github.com/tanstack/router', external: true, iconUrl: '../../assets/6.png' }
+      ]
+    },
+    // Additional nav items can be added here...
   ];
-
-  constructor(private router: Router) {}
 
   // Toggle the expanded state for nav items that have subItems
   toggleExpanded(item: NavItem, event: Event): void {
     if (item.subItems && item.subItems.length) {
-      event.preventDefault(); // Prevent navigation if sub-items exist
+      event.preventDefault(); // Prevent default navigation if sub-items exist
       item.expanded = !item.expanded;
     }
   }

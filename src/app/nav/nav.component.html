@@ -1,7 +1,8 @@
 <nav class="nav">
   <div *ngFor="let item of navItems" class="nav-item">
-    <!-- Main nav item -->
+    <!-- Main nav item with accordion toggle -->
     <a
+      [routerLink]="!item.external ? item.route : null"
       [attr.href]="item.external ? item.route : null"
       [class.active]="item.active"
       [attr.aria-current]="item.active ? 'page' : null"
@@ -11,7 +12,9 @@
       <div class="nav-item__link__container group">
         <span style="view-transition-name: library-name-start">
           <span class="nav-item__link__library">{{ item.labelMain }}</span>
-          <span class="nav-item__link__sub" [style.color]="item.subColor">{{ item.labelSub }}</span>
+          <span class="nav-item__link__sub" [style.color]="item.subColor">{{
+            item.labelSub
+          }}</span>
         </span>
         <span *ngIf="item.status" class="nav-item__link__status">
           {{ item.status }}
@@ -20,16 +23,40 @@
     </a>
 
     <!-- Sub-items block with accordion effect -->
-    <div class="nav-item__subitems" *ngIf="item.subItems && item.subItems.length && item.expanded">
+    <div
+      class="nav-item__subitems"
+      *ngIf="item.subItems && item.subItems.length && item.expanded"
+    >
       <a
         *ngFor="let sub of item.subItems"
         [routerLink]="!sub.external ? sub.route : null"
         [attr.href]="sub.external ? sub.route : null"
         class="nav-item__subitem flex gap-2 items-center px-2 ml-2 my-1 py-0.5 rounded-lg hover:bg-gray-500/10 dark:hover:bg-gray-500/30"
       >
-        <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 16 16" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-          <path fill-rule="evenodd" d="M2 2h12l1 1v10l-1 1H2l-1-1V3l1-1zm0 11h12V3H2v10zm11-9H3v3h10V4zm-1 2H4V5h8v1zm-3 6h4V8H9v4zm1-3h2v2h-2V9zM7 8H3v1h4V8zm-4 3h4v1H3v-1z"></path>
-        </svg>
+        <!-- Dynamic sub-item icon: if iconUrl provided, display an image; else fallback to default SVG -->
+        <ng-container *ngIf="sub.iconUrl; else defaultIcon">
+          <img
+            [src]="sub.iconUrl"
+            alt="{{ sub.label }} icon"
+            class="nav-item__subitem__icon"
+          />
+        </ng-container>
+        <ng-template #defaultIcon>
+          <svg
+            stroke="currentColor"
+            fill="currentColor"
+            stroke-width="0"
+            viewBox="0 0 16 16"
+            height="1em"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M2 2h12l1 1v10l-1 1H2l-1-1V3l1-1zm0 11h12V3H2v10zm11-9H3v3h10V4zm-1 2H4V5h8v1zm-3 6h4V8H9v4zm1-3h2v2h-2V9zM7 8H3v1h4V8zm-4 3h4v1H3v-1z"
+            ></path>
+          </svg>
+        </ng-template>
         <span>{{ sub.label }}</span>
       </a>
     </div>
