@@ -5,7 +5,9 @@ import Chart from 'chart.js/auto';
 interface ChartConfig {
   type: string;
   title: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: any;
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   options: any;
   meta: string[];  // meta tags for filtering
 }
@@ -246,6 +248,7 @@ export class DashboardComponent implements AfterViewInit {
       const metric = this.metrics[index];
       const ctx = canvasRef.nativeElement.getContext('2d');
       if (ctx && metric) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         let miniConfig: any;
         if (metric.type === 'line') {
           miniConfig = {

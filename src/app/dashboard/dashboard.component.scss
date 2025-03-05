@@ -53,6 +53,8 @@
     grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
     gap: 1.5rem;
     margin-bottom: 2rem;
+    padding: 1rem;
+    border-radius: 1rem;
   }
 }
 
@@ -63,7 +65,7 @@
 .metric-card {
   background-color: #0d121c;
   border: 1px solid rgb(44, 52, 55);
-  border-radius: 0.5rem;
+  border-radius: 1rem;
   padding: 1.5rem;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   text-align: center;
@@ -92,11 +94,13 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
   gap: 1.5rem;
+  padding: 1rem;
+  border-radius: 16px;
 }
 
 .chart-card {
   background-color: #0d121c;
-  border-radius: 0.5rem;
+  border-radius: 16px;
   border: 1px solid rgb(44, 52, 55);
   overflow: hidden;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -150,5 +154,40 @@
     &__header h1 {
       font-size: 2rem;
     }
+  }
+}
+
+/* Border Beam Animation */
+.border-beam {
+  position: relative;
+  z-index: 1;
+  border-radius: inherit;
+  overflow: hidden;
+}
+
+.border-beam::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ff0000, #00ff00, #0000ff, #ff00ff, #ff0000);
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(4px);
+  border-radius: inherit;
+  animation: borderBeam 60s linear infinite;
+}
+
+@keyframes borderBeam {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
   }
 }

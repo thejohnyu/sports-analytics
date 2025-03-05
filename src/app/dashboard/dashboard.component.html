@@ -4,7 +4,7 @@
   </header>
 
   <!-- Metrics Section with Mini Charts -->
-  <section class="dashboard__metrics">
+  <section class="dashboard__metrics border-beam">
     <div class="metric-card" *ngFor="let metric of metrics">
       <p class="metric-card__label">{{ metric.label }}</p>
       <p class="metric-card__value">{{ metric.value }}</p>
@@ -15,7 +15,7 @@
   </section>
 
   <!-- Filter Toolbar -->
-  <section class="dashboard__filter-toolbar">
+  <section class="dashboard__filter-toolbar border-beam">
     <div class="filter-toolbar__container">
       <label *ngFor="let option of filterOptions" class="filter-option">
         <input
@@ -29,7 +29,7 @@
   </section>
 
   <!-- Charts Section -->
-  <section class="dashboard__charts">
+  <section class="dashboard__charts border-beam">
     <div
       class="chart-card"
       *ngFor="let config of filteredChartConfigs; let i = index"
