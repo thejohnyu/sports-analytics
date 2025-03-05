@@ -1,0 +1,19 @@
+<nav class="nav">
+  <div class="nav__logo">
+    <a routerLink="/">
+      <!-- Replace with your logo image -->
+      <img src="../../assets/nav.png" alt="Logo" />
+    </a>
+  </div>
+  <ul class="nav__list">
+    <li class="nav__item" *ngFor="let item of navItems">
+      <a
+        routerLink="{{ item.path }}"
+        routerLinkActive="active"
+        class="nav__link"
+      >
+        {{ item.label }}
+      </a>
+    </li>
+  </ul>
+</nav>
