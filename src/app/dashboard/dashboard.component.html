@@ -1,37 +1,54 @@
 <div class="dashboard__container">
-  <h2 class="dashboard__container__title">Dashboard</h2>
-  <div class="dashboard__container__metrics">
-    <div class="dashboard__container__metrics__card">
-      <h3 class="dashboard__container__metrics__card__title">Wins</h3>
-      <p class="dashboard__container__metrics__card__value">120</p>
+  <header class="dashboard__header">
+    <h1>Dashboard (NBA)</h1>
+  </header>
+
+  <!-- Metrics Section with Mini Charts -->
+  <section class="dashboard__metrics border-beam">
+    <div class="metric-card" *ngFor="let metric of metrics">
+      <p class="metric-card__label">{{ metric.label }}</p>
+      <p class="metric-card__value">{{ metric.value }}</p>
+      <div class="metric-card__mini-chart-container">
+        <canvas #miniChart class="metric-card__mini-chart"></canvas>
+      </div>
     </div>
-    <div class="dashboard__container__metrics__card">
-      <h3 class="dashboard__container__metrics__card__title">Losses</h3>
-      <p class="dashboard__container__metrics__card__value">80</p>
+  </section>
+
+  <!-- Filter Toolbar -->
+  <section class="dashboard__filter-toolbar border-beam">
+    <div class="filter-toolbar__container">
+      <label *ngFor="let option of filterOptions" class="filter-option">
+        <input
+          type="checkbox"
+          [checked]="selectedFilters.includes(option)"
+          (change)="toggleFilter(option)"
+        />
+        <span>{{ option }}</span>
+      </label>
     </div>
-    <div class="dashboard__container__metrics__card">
-      <h3 class="dashboard__container__metrics__card__title">Win %</h3>
-      <p class="dashboard__container__metrics__card__value">60%</p>
+  </section>
+
+  <!-- Charts Section -->
+  <section class="dashboard__charts border-beam">
+    <div
+      class="chart-card"
+      *ngFor="let config of filteredChartConfigs; let i = index"
+    >
+      <!-- Card Toolbar/Header -->
+      <div class="chart-card__toolbar">
+        <p class="chart-card__toolbar__title">{{ config.title }}</p>
+      </div>
+      <!-- Chart Body -->
+      <div class="chart-card__body">
+        <canvas #chartCanvas class="chart-card__canvas"></canvas>
+      </div>
+      <!-- Card Description -->
+      <div class="chart-card__description">
+        <p>
+          <strong>{{ config.title }}</strong> displays mock data for
+          demonstration.
+        </p>
+      </div>
     </div>
-  </div>
-  <div class="dashboard__container__charts">
-    <div class="dashboard__container__charts__card">
-      <h3 class="dashboard__container__charts__card__title">
-        Wins & Losses Trend
-      </h3>
-      <canvas
-        class="dashboard__container__charts__card__canvas"
-        #lineChart
-      ></canvas>
-    </div>
-    <div class="dashboard__container__charts__card">
-      <h3 class="dashboard__container__charts__card__title">
-        Betting Odds Trend
-      </h3>
-      <canvas
-        class="dashboard__container__charts__card__canvas"
-        #barChart
-      ></canvas>
-    </div>
-  </div>
+  </section>
 </div>

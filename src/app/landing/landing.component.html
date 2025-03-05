@@ -1,31 +1,58 @@
-<div class="landing__container">
-  <h1 class="landing__container__title">Welcome to Sports Analytics with AI</h1>
-  <p class="landing__container__subtitle">
-    Unlock the power of sports data like never before.
-  </p>
-  <h1>My todos</h1>
-  <button (click)="createTodo()">+ new</button>
-  <ul>
-    <li *ngFor="let todo of todos">
-      <!-- {{ todo.content }} -->
-    </li>
-  </ul>
-  <div>
-    🥳 App successfully hosted. Try creating a new todo.
-    <br />
-    <a href="https://docs.amplify.aws/gen2/start/quickstart/">
-      Review next steps of this tutorial.
-    </a>
-  </div>
-</div>
-<div class="landing__container">
-  <h1 class="landing__container__title">MORE INFORMATION</h1>
-  <p class="landing__container__subtitle">
-    Unlock the power of sports data like never before.
-  </p>
-  <div>
-    🥳
-    <br />
-    <a href="https://docs.amplify.aws/gen2/start/quickstart/"> OMG </a>
-  </div>
+<div class="landing">
+  <!-- Deals Section -->
+  <section class="landing__deals">
+    <h2 class="landing__deals__title">Latest Deals</h2>
+    <div class="landing__deals__grid">
+      <div class="deal-card" *ngFor="let deal of deals">
+        <img [src]="deal.imageUrl" alt="{{ deal.title }}" class="deal-card__image" />
+        <div class="deal-card__content">
+          <h3 class="deal-card__title">{{ deal.title }}</h3>
+          <p class="deal-card__description">{{ deal.description }}</p>
+          <span class="deal-card__discount">{{ deal.discount }}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call To Action Section -->
+  <section class="landing__cta">
+    <h2 class="landing__cta__title">Struggling with Betting Predictions? 🤔</h2>
+    <p class="landing__cta__text">
+      Our AI-driven insights and data analytics will help you make smarter bets and crush your competition! 🚀
+    </p>
+    <button class="landing__cta__button">Learn More</button>
+  </section>
+
+  <!-- New Section 1: Proven Track Record -->
+  <section class="landing__success">
+    <h2 class="landing__success__title">Proven Track Record 📈</h2>
+    <p class="landing__success__text">
+      Our platform’s data-driven approach has delivered consistent long-term wins for our users. With real-time AI predictions and analytics, you're set to dominate the game for years to come!
+    </p>
+  </section>
+
+  <!-- New Section 2: Sustainable Success -->
+  <section class="landing__sustainable">
+    <h2 class="landing__sustainable__title">Sustainable Success for the Long Haul 💪</h2>
+    <p class="landing__sustainable__text">
+      Using our advanced tools and expert insights, you’ll enjoy a winning strategy that stands the test of time. Get ready for a future of smart bets and sustained victories!
+    </p>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="landing__pricing">
+    <h2 class="landing__pricing__title">Choose Your Plan</h2>
+    <div class="landing__pricing__grid">
+      <div class="pricing-card" *ngFor="let option of pricingOptions">
+        <h3 class="pricing-card__tier">{{ option.tier }}</h3>
+        <p class="pricing-card__price">{{ option.price }}</p>
+        <ul class="pricing-card__features">
+          <li *ngFor="let feature of option.features">{{ feature }}</li>
+        </ul>
+        <button class="pricing-card__button">
+          {{ option.tier === 'Pro' ? 'Subscribe Pro' : 'Get Started' }}
+        </button>
+      </div>
+    </div>
+  </section>
 </div>
