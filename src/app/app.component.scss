@@ -71,3 +71,7 @@
   grid-area: footer;
   text-align: center;
 }
+
+router-outlet {
+  display: none;
+}
