@@ -66,6 +66,8 @@
   box-shadow: (0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px,
     rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px;
   grid-area: aside;
+  background-color: #0d121c;
+  border: 1px solid rgb(44, 52, 55);
 }
 .app__container__footer {
   grid-area: footer;

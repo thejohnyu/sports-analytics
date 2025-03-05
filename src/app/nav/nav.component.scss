@@ -1,7 +1,7 @@
 .nav {
   background-color: #0d121c;
-  border-right: 1px solid rgb(44, 52, 55);
-  height: 100vh;
+  border: 1px solid rgb(44, 52, 55);
+  height: 100%;
   display: grid;
   grid-template-columns: minmax(240px, 1fr);
   grid-template-rows: 50px 1fr;
