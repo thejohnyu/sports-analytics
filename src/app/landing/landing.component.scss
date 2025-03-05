@@ -1,4 +1,27 @@
 .landing {
+  &__header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 50;
+      color: #fff;
+      font-size: 4rem;
+      line-height: 1.05;
+      font-weight: 120;
+      letter-spacing: -0.015em;
+      font-family: SF Pro Display, SF Pro Icons, Helvetica Neue, Helvetica,
+        Arial, sans-serif;
+    }
+
+    img {
+      border-radius: 16px;
+      border: 2px solid rgb(44, 52, 55);
+    }
+  }
+
   &__deals {
     padding: 2rem;
     background-color: #0d121c;
