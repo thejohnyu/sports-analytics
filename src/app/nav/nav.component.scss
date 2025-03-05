@@ -54,6 +54,9 @@
 
     &__subitems {
       margin-top: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
       a {
         text-decoration: none;
         display: flex;
