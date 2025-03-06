@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, ChangeDetectionStrategy } from '@angular/core';
 import { Router } from '@angular/router';
@@ -12,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
   // Example nav items – you can also import these from your NavComponent if desired.
-  navItems = [
+  navItems:any = [
     { label: 'Dashboard', path: '/dashboard' },
     { label: 'Home', path: '/' },
     { label: 'About', path: '/about' },
