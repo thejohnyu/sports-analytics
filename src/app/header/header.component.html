@@ -1,22 +1,16 @@
-<header class="header">
+<header class="header" [class.scrolled]="scrolled">
   <div class="header__content">
     <div class="header__logo">
       <a routerLink="/">
         <!-- Replace with your logo image -->
         <img src="assets/avatar-dark.png" alt="Sports Betting AI Logo" />
       </a>
-      <span class="header__title">
-        Sports AI
-      </span>
+      <span class="header__title">Sports AI</span>
     </div>
     <nav class="header__nav desktop-only">
       <ul class="header__nav__list">
         <li class="header__nav__item" *ngFor="let item of navItems">
-          <a
-            routerLink="{{ item.path }}"
-            class="header__nav__link"
-            (click)="onClickHeaderItem()"
-          >
+          <a routerLink="{{ item.path }}" class="header__nav__link" (click)="onClickHeaderItem()">
             {{ item.label }}
           </a>
         </li>
