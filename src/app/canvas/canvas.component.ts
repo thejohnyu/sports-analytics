@@ -2,12 +2,11 @@ import { Component, AfterViewInit, ViewChild, ElementRef, ChangeDetectionStrateg
 import { FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-canvas',
-  templateUrl: './canvas.component.html',
-  styleUrls: ['./canvas.component.scss'],
-  imports: [FormsModule],
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-canvas',
+    templateUrl: './canvas.component.html',
+    styleUrls: ['./canvas.component.scss'],
+    imports: [FormsModule],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CanvasComponent implements AfterViewInit, OnDestroy {
   @ViewChild('canvasElement') canvasRef!: ElementRef<HTMLCanvasElement>;

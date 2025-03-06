@@ -10,12 +10,11 @@ export interface Team {
 }
 
 @Component({
-  selector: 'app-teams',
-  templateUrl: './teams.component.html',
-  styleUrls: ['./teams.component.scss'],
-  imports: [DragDropModule, CommonModule],
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-teams',
+    templateUrl: './teams.component.html',
+    styleUrls: ['./teams.component.scss'],
+    imports: [DragDropModule, CommonModule],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TeamsComponent implements OnInit {
   teams: Team[] = [];

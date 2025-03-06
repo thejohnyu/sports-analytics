@@ -5,12 +5,11 @@ import { tap } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'app-statistics',
-  templateUrl: './statistics.component.html',
-  styleUrls: ['./statistics.component.scss'],
-  imports: [CommonModule],
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-statistics',
+    templateUrl: './statistics.component.html',
+    styleUrls: ['./statistics.component.scss'],
+    imports: [CommonModule],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StatisticsComponent implements OnInit {
   advancedStats$!: Observable<TeamStat[]>;

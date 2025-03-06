@@ -8,10 +8,9 @@ import { NavComponent } from './nav/nav.component';
 // Amplify.configure(outputs);
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, NavComponent],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.scss',
+    imports: [RouterOutlet, HeaderComponent, FooterComponent, NavComponent]
 })
 export class AppComponent {}

@@ -8,12 +8,11 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: 'app-survey',
-  templateUrl: './survey.component.html',
-  styleUrls: ['./survey.component.scss'],
-  imports: [ReactiveFormsModule, CommonModule],
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-survey',
+    templateUrl: './survey.component.html',
+    styleUrls: ['./survey.component.scss'],
+    imports: [ReactiveFormsModule, CommonModule],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SurveyComponent implements OnInit {
   surveyForm!: FormGroup;

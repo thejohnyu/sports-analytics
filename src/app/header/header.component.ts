@@ -4,12 +4,11 @@ import { Component, HostListener, ChangeDetectionStrategy } from '@angular/core'
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
-  standalone: true,
-  imports: [CommonModule, RouterModule],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
+    imports: [CommonModule, RouterModule],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
   // Example nav items – you can also import these from your NavComponent if desired.

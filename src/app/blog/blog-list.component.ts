@@ -3,12 +3,11 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-blog-list',
-  templateUrl: './blog-list.component.html',
-  styleUrls: ['./blog-list.component.scss'],
-  imports: [RouterModule, CommonModule],
-  standalone: true,
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-blog-list',
+    templateUrl: './blog-list.component.html',
+    styleUrls: ['./blog-list.component.scss'],
+    imports: [RouterModule, CommonModule],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BlogListComponent {
   blogs = [
