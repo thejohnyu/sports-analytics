@@ -46,8 +46,8 @@ export class NavComponent {
           iconUrl: '../../assets/4.png',
         },
         {
-          label: 'Charts',
-          route: '/dashboard/charts',
+          label: 'Odds',
+          route: '/odds',
           iconUrl: '../../assets/8.png',
         },
       ],
@@ -195,6 +195,60 @@ export class NavComponent {
       active: true,
       expanded: false,
       subColor: 'red',
+      subItems: [
+        {
+          label: 'Odds',
+          route: '/start/latest/docs/framework/react/examples/start-basic',
+          iconUrl: '../../assets/4.png',
+        },
+        {
+          label: 'Futures',
+          route: '/start/latest/docs/framework/react/overview',
+          iconUrl: '../../assets/5.png',
+        },
+        {
+          label: 'Ranking',
+          route: 'https://github.com/tanstack/router',
+          external: true,
+          iconUrl: '../../assets/6.png',
+        },
+      ],
+    },
+    {
+      labelMain: 'SportCards',
+      labelSub: 'View',
+      route: '/',
+      status: 'PRO',
+      active: true,
+      expanded: false,
+      subColor: 'gold',
+      subItems: [
+        {
+          label: 'Odds',
+          route: '/start/latest/docs/framework/react/examples/start-basic',
+          iconUrl: '../../assets/4.png',
+        },
+        {
+          label: 'Futures',
+          route: '/start/latest/docs/framework/react/overview',
+          iconUrl: '../../assets/5.png',
+        },
+        {
+          label: 'Ranking',
+          route: 'https://github.com/tanstack/router',
+          external: true,
+          iconUrl: '../../assets/6.png',
+        },
+      ],
+    },
+    {
+      labelMain: 'Sneaker',
+      labelSub: 'View',
+      route: '/',
+      status: 'PRO',
+      active: true,
+      expanded: false,
+      subColor: 'orange',
       subItems: [
         {
           label: 'Odds',
