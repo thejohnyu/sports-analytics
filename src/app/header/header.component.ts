@@ -1,40 +1,46 @@
-import { Component, HostListener, ChangeDetectionStrategy } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
-import { Sport, SportService } from '../sport.service';
 import { CommonModule } from '@angular/common';
+import { Component, HostListener, ChangeDetectionStrategy } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  standalone: true,
-  imports: [RouterModule, CommonModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
+  standalone: true,
+  imports: [CommonModule],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
-  public navItems = [
+  // Example nav items – you can also import these from your NavComponent if desired.
+  navItems = [
+    { label: 'Dashboard', path: '/dashboard' },
     { label: 'Home', path: '/' },
     { label: 'About', path: '/about' },
-    { label: 'Dashboard', path: '/dashboard' },
-    { label: 'Teams', path: '/teams' },
-    { label: 'Stats', path: '/statistics' },
-    { label: 'Survey', path: '/survey' },
     { label: 'Blog', path: '/blog' },
-    { label: 'Calculator', path: '/calculator' },
-    // { label: 'Canvas', path: '/canvas' },
+    { label: 'Pricing', path: '/pricing' }
   ];
 
-  // Mobile hamburger menu state
-  public mobileMenuOpen = false;
+  mobileMenuOpen = false;
+  scrolled = false;
 
-  constructor(private router: Router, private sportService: SportService) {}
+  constructor(private router: Router) {}
+
+  @HostListener('window:scroll', [])
+  onWindowScroll(): void {
+    // When page is scrolled more than 5px, mark as scrolled
+    this.scrolled = window.pageYOffset > 5;
+  }
 
   toggleMobileMenu(): void {
     this.mobileMenuOpen = !this.mobileMenuOpen;
   }
 
   navigate(path: string): void {
-    this.router.navigate([path]);
     this.mobileMenuOpen = false;
+    this.router.navigate([path]);
+  }
+
+  onClickHeaderItem(): void {
+    // Additional actions on nav click, if needed.
   }
 }

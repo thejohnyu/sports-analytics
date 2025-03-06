@@ -1,0 +1,103 @@
+.odds__container {
+  padding: 2rem;
+  background-color: #0d121c;
+  color: #fff;
+  font-family: sans-serif;
+
+  .odds__title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+}
+
+/* Table Styling */
+.sportsbook-table {
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  background-color: #0d121c;
+  color: #fff;
+
+  th,
+  td {
+    border: 1px solid rgb(44, 52, 55);
+    padding: 0.75rem;
+    text-align: left;
+  }
+
+  th {
+    background-color: rgb(44, 52, 55);
+    font-weight: bold;
+  }
+
+  /* Every 2 rows (match group) share the same background color */
+  .match-row {
+    background-color: #0d121c;
+  }
+  /* Alternate background for every other match group */
+  .alt-background {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  /* Add 1px divider (using border-bottom) after each match group */
+  .match-info {
+    td {
+      border-bottom: 1px solid rgb(44, 52, 55);
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+      font-style: italic;
+      font-size: 0.875rem;
+      color: #ff9800;
+      // text-align: center;
+      background-color: #0d121c;
+    }
+  }
+
+  /* Team cell with dynamic image */
+  .team-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    img.team-logo {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+  }
+
+  /* Highlight moneyline odds with text effects */
+  .moneyline-cell.highlight {
+    font-weight: bold;
+    color: #ff9800;
+    // animation: pulseMoney 30s infinite;
+  }
+
+  //   @keyframes pulseMoney {
+  //     0% {
+  //       transform: scale(1);
+  //     }
+  //     50% {
+  //       transform: scale(1.05);
+  //     }
+  //     100% {
+  //       transform: scale(1);
+  //     }
+  //   }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .odds__container {
+    padding: 1rem;
+    .odds__title {
+      font-size: 1.5rem;
+    }
+  }
+  .sportsbook-table {
+    font-size: 0.75rem;
+    th,
+    td {
+      padding: 0.5rem;
+    }
+  }
+}
