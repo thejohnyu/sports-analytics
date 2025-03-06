@@ -1,0 +1,50 @@
+<div class="odds__container">
+    <h1 class="odds__title">NBA Betting Odds</h1>
+    <table class="sportsbook-table">
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>Moneyline</th>
+          <th>Spread</th>
+          <th>Total</th>
+          <th>Opponent Type</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Iterate over each match group -->
+        <ng-container *ngFor="let match of matches; let i = index">
+          <!-- Match Info Row: spans all columns, with 1px divider below -->
+          <tr class="match-info">
+            <td colspan="5">
+              <div class="match-info__details">
+                Date: {{ match.date }} | Time: {{ match.time }}
+              </div>
+            </td>
+          </tr>
+          <!-- Away Team Row -->
+          <tr class="match-row" [ngClass]="{'alt-background': i % 2 === 1}">
+            <td class="team-cell">
+              <img [src]="match.away.imageUrl" alt="{{ match.away.team }} Logo" class="team-logo" />
+              {{ match.away.team }}
+            </td>
+            <td class="moneyline-cell highlight">{{ match.away.moneyline }}</td>
+            <td>{{ match.away.spread }}</td>
+            <td>{{ match.away.total }}</td>
+            <td>{{ match.away.opponentType }}</td>
+          </tr>
+          <!-- Home Team Row -->
+          <tr class="match-row" [ngClass]="{'alt-background': i % 2 === 1}">
+            <td class="team-cell">
+              <img [src]="match.home.imageUrl" alt="{{ match.home.team }} Logo" class="team-logo" />
+              {{ match.home.team }}
+            </td>
+            <td class="moneyline-cell highlight">{{ match.home.moneyline }}</td>
+            <td>{{ match.home.spread }}</td>
+            <td>{{ match.home.total }}</td>
+            <td>{{ match.home.opponentType }}</td>
+          </tr>
+        </ng-container>
+      </tbody>
+    </table>
+  </div>
+  

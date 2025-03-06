@@ -59,5 +59,9 @@ export const routes: Routes = [
       ),
     // canActivate: [AuthGuard],
   },
+  {
+    path: 'odds',
+    loadComponent: () => import('./odds/odds.component').then(m => m.OddsComponent)
+  },
   { path: '**', component: FallbackComponent },
 ];

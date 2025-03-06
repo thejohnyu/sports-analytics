@@ -14,8 +14,8 @@
         <li class="header__nav__item" *ngFor="let item of navItems">
           <a
             routerLink="{{ item.path }}"
-            routerLinkActive="active"
             class="header__nav__link"
+            (click)="onClickHeaderItem()"
           >
             {{ item.label }}
           </a>
