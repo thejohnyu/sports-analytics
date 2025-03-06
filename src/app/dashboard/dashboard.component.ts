@@ -27,12 +27,11 @@ interface Metric {
 }
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss'],
-  standalone: true,
-  imports: [CommonModule],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-dashboard',
+    templateUrl: './dashboard.component.html',
+    styleUrls: ['./dashboard.component.scss'],
+    imports: [CommonModule],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DashboardComponent implements AfterViewInit {
   // Filter toolbar options

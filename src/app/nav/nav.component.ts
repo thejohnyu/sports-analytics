@@ -22,12 +22,11 @@ interface NavItem {
 }
 
 @Component({
-  selector: 'app-nav',
-  standalone: true,
-  imports: [RouterModule, CommonModule],
-  templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-nav',
+    imports: [RouterModule, CommonModule],
+    templateUrl: './nav.component.html',
+    styleUrls: ['./nav.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavComponent {
   navItems: NavItem[] = [

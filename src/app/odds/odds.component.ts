@@ -18,12 +18,11 @@ interface Match {
 }
 
 @Component({
-  selector: 'app-odds',
-  templateUrl: './odds.component.html',
-  styleUrls: ['./odds.component.scss'],
-  standalone: true,
-  imports: [CommonModule],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-odds',
+    templateUrl: './odds.component.html',
+    styleUrls: ['./odds.component.scss'],
+    imports: [CommonModule],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class OddsComponent implements OnInit {
   matches: Match[] = [];

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable } from '@angular/core';
 
 export interface Theme {
@@ -11,7 +12,7 @@ export interface Theme {
   providedIn: 'root'
 })
 export class ThemeService {
-  private themes: { [key: string]: Theme } = {
+  private themes: any = {
     default: {
       '--color-primary': '#202123',
       '--color-secondary': '#fff',

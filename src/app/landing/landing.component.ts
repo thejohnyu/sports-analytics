@@ -15,12 +15,11 @@ interface PricingOption {
 }
 
 @Component({
-  selector: 'app-landing',
-  templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.scss'],
-  standalone: true,
-  imports: [CommonModule],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'app-landing',
+    templateUrl: './landing.component.html',
+    styleUrls: ['./landing.component.scss'],
+    imports: [CommonModule],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LandingComponent implements OnInit {
   deals: Deal[] = [];

@@ -1,18 +1,18 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { CommonModule } from '@angular/common';
 import { Component, HostListener, ChangeDetectionStrategy } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
-  standalone: true,
-  imports: [CommonModule],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss'],
+    imports: [CommonModule, RouterModule],
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HeaderComponent {
   // Example nav items – you can also import these from your NavComponent if desired.
-  navItems = [
+  navItems:any = [
     { label: 'Dashboard', path: '/dashboard' },
     { label: 'Home', path: '/' },
     { label: 'About', path: '/about' },
